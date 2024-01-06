@@ -17554,6 +17554,20 @@ window.initComponents = function() {
     Timepicker: Sg,
     Validation: jh
   }, { allowReinits: true }, true);
+  console.log("TW-ELEMENTS INITIALIZED");
 };
 initComponents();
 htmx.config.useTemplateFragments = true;
+var validation1 = document.getElementById("validation-1");
+var form1 = document.getElementById("form-1");
+var input1 = document.getElementById("input-1");
+var valid = true;
+if (validation1) {
+  console.log("VALIDATION 1");
+  validation1.addEventListener("click", (e2) => {
+    e2.preventDefault();
+    input1.setAttribute("data-te-validation-state", valid ? "valid" : "invalid");
+    form1.setAttribute("data-te-validated", true);
+    valid = !valid;
+  });
+}

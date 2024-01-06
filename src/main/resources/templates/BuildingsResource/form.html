@@ -1,22 +1,33 @@
 {@com.yaz.domain.FormDto dto}
 
-<form class="form-control"
+<form
+    id="building-form"
+    class="form-control"
       hx-swap="outerHTML"
       data-te-validation-init
-  {#if !dto.isNew}
-      data-te-validated="true"
-  {/if}
+
       hx-post="/api/buildings/new"
-      script="init call initComponents()"
+      script="
+      init call initComponents()
+"
   >
   <div class="relative mb-3"
        data-te-input-wrapper-init
        data-te-validate="input"
        data-te-invalid-feedback="ID already created"
-
+    script="
   {#if dto.isError}
-       data-te-validation-state="invalid"
+      init log 'setting data-te-validation-state'
+      init set @data-te-validation-state to 'invalid'
+      init log 'data-te-validation-state added'
   {/if}
+
+  {#if !dto.isNew}
+      init log 'setting data-te-validated'
+    init set #building-form@data-te-validated to 'true'
+    init log 'data-te-validated added'
+  {/if}
+  "
   >
 
       <input
