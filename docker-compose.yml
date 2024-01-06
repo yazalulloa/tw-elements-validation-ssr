@@ -1,0 +1,10 @@
+version: '3'
+services:
+  cmy:
+    container_name: tw-elements-validation-ssr
+    image: tw-elements-validation-ssr:latest
+    restart: always
+    ports:
+      - "34251:34251"
+    environment:
+      - TZ=America/Caracas
